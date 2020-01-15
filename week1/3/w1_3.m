@@ -10,7 +10,8 @@ gray = rgb2gray(img);
 subplot(1, 2, 2), imshow(gray);
 title('Grayscale');
 
-answer = gray(1:2:220, 1:2:220);
+%answer = gray(1:2:220, 1:2:220);
+answer = gray(1:2:end, 1:2:end);
 
 figure, imshow(answer);
 title('answer');
