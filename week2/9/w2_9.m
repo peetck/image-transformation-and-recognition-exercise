@@ -17,3 +17,4 @@ diff = img - blur;
 
 subplot(1, 3, 3), imshow(diff);
 title('Diff btw original and blur');
+
