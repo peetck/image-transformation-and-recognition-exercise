@@ -16,10 +16,10 @@ Fshow2 = ifft2(fftshift(F .* mask_2));
 Fshow3 = ifft2(fftshift(F .* mask_3));
 Fshow4 = ifft2(fftshift(F .* mask_4));
  
-figure, subplot(2, 4, 1), imshow(mask_1);
-subplot(2, 4, 2), imshow(mask_2);
-subplot(2, 4, 3), imshow(mask_3);
-subplot(2, 4, 4), imshow(mask_4);
+figure, subplot(2, 4, 1), imshow(log(1 + abs(F .* mask_1)), []);
+subplot(2, 4, 2), imshow(log(1 + abs(F .* mask_2)), []);
+subplot(2, 4, 3), imshow(log(1 + abs(F .* mask_3)), []);
+subplot(2, 4, 4), imshow(log(1 + abs(F .* mask_4)), []);
  
 subplot(2, 4, 5), imshow(Fshow1, []);
 subplot(2, 4, 6), imshow(Fshow2, []);

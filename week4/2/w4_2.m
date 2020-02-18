@@ -13,11 +13,11 @@ F(110 : end, :) = 0
  
 Fshow = log(1 + abs(F));
  
-figure, imshow(Fshow, []);
+figure, subplot(2, 2, 1), imshow(Fshow, []);
  
 I = ifft2(fftshift(F));
  
-figure, imshow(I, []);
+subplot(2, 2, 3),imshow(I, []);
  
 % left bottom
 
@@ -28,8 +28,8 @@ F(110 : end, 111: end) = 0
  
 Fshow = log(1 + abs(F));
  
-figure, imshow(Fshow, []);
+subplot(2, 2, 2),imshow(Fshow, []);
  
 I = ifft2(fftshift(F));
  
-figure, imshow(I, []);
+subplot(2, 2, 4),imshow(I, []);

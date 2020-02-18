@@ -1,60 +1,21 @@
 clear all, close all, clc
 
-lenna_img = imread('../../images/lenna.png');
+circle = imread('../../images/pic1.bmp');
+triangle = imread('../../images/pic2.bmp');
+square = imread('../../images/pic3.bmp');
+rectangle = imread('../../images/pic4.bmp');
 
-lenna_gray = rgb2gray(lenna_img);
+F_circle = fftshift(fft2(circle));
+F_triangle = fftshift(fft2(triangle));
+F_square = fftshift(fft2(square));
+F_rectangle = fftshift(fft2(rectangle));
 
-F = fftshift(fft2(lenna_gray));
+figure, subplot(2, 4, 1), imshow(circle, []);
+subplot(2, 4, 2), imshow(triangle, []);
+subplot(2, 4, 3), imshow(square, []);
+subplot(2, 4, 4), imshow(rectangle, []);
 
-circle_mask = genMaskC(220, 220, 0, 50);
-
-triangle_mask = zeros(220, 220);
-row = 160;
-col_l = 60;
-col_r = 160;
-while 1
-    triangle_mask(row, col_l:col_r) = 1;
-    row = row - 1;
-    col_l = col_l + 0.5;
-    col_r = col_r - 0.5;
-    if col_l >= col_r
-        break
-    end
-end
-
-square_mask = zeros(220, 220);
-square_mask(60:160, 60:160) = 1;
-
-rectangle_mask = zeros(220, 220);
-rectangle_mask(90:130, 30:190) = 1;
-
-Fshow1 = ifft2(fftshift(F .* circle_mask));
-Fshow2 = ifft2(fftshift(F .* triangle_mask));
-Fshow3 = ifft2(fftshift(F .* square_mask));
-Fshow4 = ifft2(fftshift(F .* rectangle_mask));
-
-figure, subplot(2, 4, 1), imshow(circle_mask);
-subplot(2, 4, 2), imshow(triangle_mask);
-subplot(2, 4, 3), imshow(square_mask);
-subplot(2, 4, 4), imshow(rectangle_mask);
-
-subplot(2, 4, 5), imshow(Fshow1, []);
-subplot(2, 4, 6), imshow(Fshow2, []);
-subplot(2, 4, 7), imshow(Fshow3, []);
-subplot(2, 4, 8), imshow(Fshow4, []);
-
-function out = genMaskC(r, c, rMin, rMax)
-    out = zeros(r,c);
-    cr = ceil(r/2);
-    cc = ceil(c/2);
-    for i =1:1:r
-        for j =1:1:c
-            pr = i - cr;
-            pc = j - cc;
-            tmpr = sqrt(pr^2+pc^2);
-            if tmpr >= rMin && tmpr <= rMax
-                out(i,j) = 1;
-            end
-        end
-    end
-end
+subplot(2, 4, 5), imshow(log(1 + abs(F_circle)), []);
+subplot(2, 4, 6), imshow(log(1 + abs(F_triangle)), []);
+subplot(2, 4, 7), imshow(log(1 + abs(F_square)), []);
+subplot(2, 4, 8), imshow(log(1 + abs(F_rectangle)), []);
