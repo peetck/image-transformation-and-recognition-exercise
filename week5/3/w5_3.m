@@ -17,4 +17,6 @@ mean = mean(data);
 
 zero_mean = data - mean;
 
-c = cov(zero_mean)
+c = cov(zero_mean);
+
+[V, D] = eig(c)

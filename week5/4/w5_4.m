@@ -17,11 +17,6 @@ score = [
 score_mean = mean(score, 2);
 zero_mean = score - score_mean;
 
-c = cov(zero_mean');
+c = cov(zero_mean')
 
-[V, D] = eig(c);
-
-c
-
-V
-D
+[V, D] = eig(c)
