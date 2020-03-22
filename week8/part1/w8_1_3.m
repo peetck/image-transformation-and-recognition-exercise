@@ -1,6 +1,6 @@
 close all,clear all,clc
 
-I = imread('high_008.jpg');
+I = imread('../../images/wood.jpg');
 %I = imread('../img/myPic.png');
 %I = imresize(I,[256 256]);
 % I = I(1:36,1:36);
@@ -14,11 +14,10 @@ end
 
 
 imf = FABEMD(Ig,0.5,15,1);
-prtIMF(imf,1)
+%prtIMF(imf,1)
 
-Ynew = sum(imf(:,:,1:end-1),3);
-YCbCr(:,:,1) = Ynew;
-Iout = ycbcr2rgb(YCbCr);
-figure,imshow([I Iout]);
+Ynew = sum(imf(:,:,1:1),3);
 
+figure, subplot(1, 2, 1), imshow(Ig, []);
+subplot(1, 2, 2), imshow(Ynew, [])
 
