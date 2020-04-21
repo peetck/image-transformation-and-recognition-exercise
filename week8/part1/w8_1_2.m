@@ -17,14 +17,10 @@ function BIMF(I)
         YCbCr = rgb2ycbcr(I);
         Ig = double(YCbCr(:,:,1));
     end
-
-
     imf = FABEMD(Ig,0.5,5,1);
     %prtIMF(imf,1)
-
     figure, subplot(1, 3, 1), imshow(Ig, [])
     title('Original')
-
     Ynew = sum(imf(:,:,end-1:end),3);
 
     subplot(1, 3, 2), imshow(Ynew, []);
