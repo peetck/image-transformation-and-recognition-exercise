@@ -10,13 +10,15 @@ for i = 1:1:2
     end
 end
 
-img = imread('characters/1/text (1).bmp');
+% test ???????? 2
+img = imread('characters/2/text (1).bmp');
 [h w] = size(img);
 testData = [h w];
 
-% knn
+
+% class ?????? (knn)
 testLabel = knnclassify(testData, trainData, trainLabel, 1, 'sqEuclidean')
 
-% svm
-SVMModel = fitcsvm(trainData, trainLabel);
+% class ?????? (svm)
+SVMModel = fitcsvm(trainData, trainLabel, 'KernelFunction','rbf');
 label = predict(SVMModel, testData)
