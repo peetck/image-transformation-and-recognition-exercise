@@ -28,7 +28,8 @@ imdsTr_cat.Labels = cat(1, imdsTr.Labels, imdsTr_new.Labels);
         
 imdsTr = imdsTr_cat;  
 
-options =  trainingOptions('sgdm', 'MiniBatchSize',10, 'MaxEpochs',6, 'InitialLearnRate',1e-4, 'Shuffle','every-epoch', 'ValidationData',imdsTr, 'ValidationFrequency',3, 'Verbose',false, 'Plots','training-progress');
+options =  trainingOptions('sgdm', 'MiniBatchSize',10, 'MaxEpochs',6, 'InitialLearnRate',...
+1e-4, 'Shuffle','every-epoch', 'ValidationData',imdsTr, 'ValidationFrequency',3, 'Verbose',false, 'Plots','training-progress');
 
 netTransfer = trainNetwork(imdsTr,layers,options);
 save('../augmentation_1.mat','netTransfer')

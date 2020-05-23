@@ -5,8 +5,8 @@ clear all, close all, clc
 load no_augmentation.mat
 %load augmentation_1.mat
 %load augmentation_2.mat
-%load augmentation_1_2.mat
 %load augmentation_3.mat
+%load augmentation_1_2.mat
 %load augmentation_1_3.mat
 %load augmentation_2_3.mat
 %load augmentation_1_2_3.mat
